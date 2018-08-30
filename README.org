@@ -1,0 +1,60 @@
+#+TITLE: i3-projects
+#+AUTHOR: Kyle Avrett
+#+STARTUP: content
+
+Project creation and management for i3-wm
+
+* Description
+This is a command line utility that interacts with i3-msg to make creation and management of projects easier in i3-wm.
+
+For example, if you want to work on multiple things in i3 you have to keep track of which application belongs to which project in your head. It gets even worse when you have multiple applications on multiple workspaces. This project provides commands that interact with i3 to contextualize workspaces and keep projects separate so you can create and switch to them easily.
+* Quickstart
+** Arch Linux
+#+BEGIN_EXAMPLE
+yaourt -S i3-projects
+#+END_EXAMPLE
+** From Source
+Download python3
+Download zenity
+
+#+BEGIN_EXAMPLE
+git clone https://github.com/zzelman/i3-projects
+cd i3-projects
+sudo cp i3-projects /usr/bin
+#+END_EXAMPLE
+* Example .i3/config
+#+BEGIN_EXAMPLE
+# focus or create a new project on all outputs
+bindsym $mod+p exec i3-projects focus_project
+
+# switch to workspace inside of current project
+bindsym $mod+1 exec i3-projects focus_workspace 1
+bindsym $mod+2 exec i3-projects focus_workspace 2
+bindsym $mod+3 exec i3-projects focus_workspace 3
+bindsym $mod+4 exec i3-projects focus_workspace 4
+bindsym $mod+5 exec i3-projects focus_workspace 5
+
+# move container to the current project's workspace
+bindsym $mod+Shift+1 exec i3-projects move_to_workspace 1
+bindsym $mod+Shift+2 exec i3-projects move_to_workspace 2
+bindsym $mod+Shift+3 exec i3-projects move_to_workspace 3
+bindsym $mod+Shift+4 exec i3-projects move_to_workspace 4
+bindsym $mod+Shift+5 exec i3-projects move_to_workspace 5
+
+# move container to another project's workspace
+bindsym $mod+Ctrl+1 exec i3-projects move_to_project 1
+bindsym $mod+Ctrl+2 exec i3-projects move_to_project 2
+bindsym $mod+Ctrl+3 exec i3-projects move_to_project 3
+bindsym $mod+Ctrl+4 exec i3-projects move_to_project 4
+bindsym $mod+Ctrl+5 exec i3-projects move_to_project 5
+
+# startup with a project called misc
+exec --no-startup-id i3-projects focus_project misc
+#+END_EXAMPLE
+* Dependencies
+    - i3 :: https://github.com/i3/i3
+    - python3 :: https://www.python.org/download/releases/3.0/
+    - zenity :: https://en.wikipedia.org/wiki/Zenity
+* Other useful projects for i3
+    - py3status :: https://github.com/ultrabug/py3status
+    - rofi :: https://github.com/DaveDavenport/rofi
