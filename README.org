@@ -2,7 +2,7 @@
 #+AUTHOR: Kyle Avrett
 #+STARTUP: content
 
-Project creation and management for i3-wm
+Project creation and management for i3-wm.
 
 * Description
 This is a command line utility that interacts with i3-msg to make creation and management of projects easier in i3-wm.
@@ -14,8 +14,7 @@ For example, if you want to work on multiple things in i3 you have to keep track
 yaourt -S i3-projects
 #+END_EXAMPLE
 ** From Source
-Download python3
-Download zenity
+Download python3 and zenity and make them available on $PATH.
 
 #+BEGIN_EXAMPLE
 git clone https://github.com/zzelman/i3-projects
