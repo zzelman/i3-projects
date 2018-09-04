@@ -75,6 +75,13 @@ def focus_project(project_name: str) -> None:
     """
     workspaces = _get_all_workspaces()
 
+    # figure out the current workspace num
+    current_project_name = _get_current_project_name()
+    current_workspace = next(workspace for workspace in workspaces
+                             if workspace['focused'] == True)
+    current_workspace_name = current_workspace['name']
+    current_workspace_num = current_workspace_name[current_workspace_name.find(':') + 1:]
+
     # for each xrandr output
     unique_outputs = {workspace['output'] for workspace in workspaces}
     for output in unique_outputs:
@@ -89,6 +96,9 @@ def focus_project(project_name: str) -> None:
         # create a new workspace with the project name
         workspace_num = workspace_name[workspace_name.find(':') + 1:]
         subprocess.call(['i3-msg', 'workspace ', project_name + ':' + workspace_num])
+
+    # preserve the workspace number focus of before switching projects
+    subprocess.call(['i3-msg', 'workspace ', project_name + ':' + current_workspace_num])
 
 
 def focus_workspace(workspace_num: str) -> None:
