@@ -17,7 +17,7 @@ Terminology
 """
 
 
-version = '1.1.0'
+version = '1.1.1'
 
 
 def _ask_for_project_name() -> str:
