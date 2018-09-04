@@ -17,7 +17,7 @@ Terminology
 """
 
 
-version = '1.0.0'
+version = '1.1.0'
 
 
 def _ask_for_project_name() -> str:
@@ -163,6 +163,9 @@ Commands:
         Move the focused application to the requested workspace number on another project.
         A gui popup will ask the user for the name of the project.
 
+    get_project_name
+        Prints the current workspace's project name.
+
 Example .i3/config:
     # focus or create a new project on all outputs
     bindsym $mod+p exec i3-projects focus_project
@@ -235,6 +238,9 @@ def main() -> None:
     if sys.argv[1] == 'move_to_project':
         project_name = _ask_for_project_name()
         move_to_project(project_name, sys.argv[2])
+
+    if sys.argv[1] == 'get_project_name':
+        print(_get_current_project_name())
 
 
 if __name__ == '__main__':
